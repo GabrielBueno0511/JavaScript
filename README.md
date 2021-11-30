@@ -2,4 +2,4 @@
  first code JS
 
  Meu projeto javaScript
- my project JavaScript
+ My project JavaScript
