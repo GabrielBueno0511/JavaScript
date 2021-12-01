@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            
+            var visor=document.querySelector("#visor");
+            var v1=0;
+            var v2=0;
+            var oper="";
+            var bi=document.querySelector("#bigual")
+            var resultado=0;
+            var clear=document.querySelector("#bc")
+
+            clear.addEventListener("click", function(){
+
+                v1=0;
+                v2=0;
+                resultado=0;
+                visor.value="";
+
+            });
+
+            
+            for( var b of document.querySelectorAll(".bnum")){
+
+                b.addEventListener("click", function(){
+
+                    visor.value+=this.innerHTML;
+                });
+            
+            
+            }
+
+            for( var oper of document.querySelectorAll(".operador")){
+                oper.addEventListener("click", function(){
+                    oper=this.innerHTML;
+                    v1=parseFloat(visor.value);
+                    visor.value="";
+                });
+            };
+
+            bi.addEventListener("click", function(){
+                v2=parseFloat(visor.value);
+                resultado=eval(v1+oper+v2);
+                visor.value=resultado
+                
+            });
+
+            
+
+        });
+    </script>
+    <style>
+        .fundo{
+            width: 100%;
+            right:100vh ;
+            background: linear-gradient(180deg,#fff,#000 );
+            background-size: 1000% 1000%
+        }
+        .clear{
+            width: 212px;
+            background-color: whitesmoke;
+        }
+        .visor{
+            background-color: black;
+            color: white;
+            width: 205px;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: right;
+        }
+        .igual{
+            width: 50px;
+            right: 50px;
+            border: black, double;
+            background-color: burlywood; 
+        }
+        .bnum{
+
+           width: 50px;
+           right: 50px;
+           border: black, double;
+           background-color: aliceblue; 
+           
+
+        }
+
+        .operador{
+            width: 50px;
+            right: 50px;
+            border: black, double; 
+            background-color: lavenderblush;
+
+
+        }
+    </style>
+    <title>Calculadora</title>
+</head>
+<body class="fundo">
+    <input class="visor" type="text" name="visor" id="visor"><br>
+    <button class="clear" type="button" name="bc" id="bc" > limpar </button><br>
+    <button class="bnum" type="button" name="b1" id="b1">1</button>
+    <button class="bnum" type="button" name="b2" id="b2">2</button>
+    <button class="bnum" type="button" name="b3" id="b3">3</button>
+    <button class="operador" type="button" name="b+" id="b+">+</button><br>
+    <button class="bnum" type="button" name="b4" id="b4">4</button>
+    <button class="bnum" type="button" name="b5" id="b5">5</button>
+    <button class="bnum" type="button" name="b6" id="b6">6</button>
+    <button class="operador" type="button" name="b-" id="b-">-</button><br>
+    <button class="bnum" type="button" name="b7" id="b7">7</button>
+    <button class="bnum" type="button" name="b8" id="b8">8</button>
+    <button class="bnum" type="button" name="b9" id="b9">9</button>
+    <button class="bnum" type="button" name="b." id="b.">.</button><br>
+    <button class="operador" type="button" name="b*" id="b*">*</button>
+    <button class="bnum" type="button" name="b0" id="b0">0</button>
+    <button class="operador" type="button" name="b/" id="b/">/</button>
+    <button class="igual" type="button" name="b=" id="bigual">=</button>
+    
+
+    
+</body>
+</html>
