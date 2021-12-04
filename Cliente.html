@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <style>
+
+        body{
+            background-color: oldlace ;
+        }
+        .buttom1{
+            background-color: yellow;
+            color: black;
+        }
+        
+        .buttom2{
+            background-color:greenyellow;
+            color: black;
+            
+        }
+
+        .buttom3{
+            background-color: red;
+            color: black;
+        }
+
+        label{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .cabeçalho{
+            background-color: aquamarine;
+        }
+
+        .numeros{
+            background-color: cadetblue;
+        }
+
+        .nomes{
+            background-color: darkcyan;
+        }
+        
+        .fundo{
+            width: 100%;
+            right:100vh ;
+            background: linear-gradient(180deg,#ffff,#262626 );
+            background-size: 400% 400%
+        }
+
+        
+        
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            var lista=[];
+
+            function addItem(){
+                var nam=document.querySelector("#txtnome").value;
+                var ida=document.querySelector("#txtidade").value;
+                var obj = {"nome":nam, "idade":ida };
+                lista.push(obj);
+               console.log(lista);
+            }
+
+            var botaoinc=document.querySelector("#btnAdd");
+                botaoinc.addEventListener("click", addItem);
+            
+            
+            var botaolista=document.querySelector("#btnLista");
+                botaolista.addEventListener("click", function(){
+                    var txt="";
+                    for(var i=0;i<lista.length;i++){
+                      txt+=`<tr><td>${lista[i].nome}</td><td>${lista[i].idade}</td></tr>`;
+                    }
+
+                    document.querySelector("#tabela").innerHTML=txt;
+                
+
+                  });
+            
+
+            var botaomaiores=document.querySelector("#btnMaiores");
+                botaomaiores.addEventListener("click", function(){
+                    var txt2="<p>Maiores de 60 anos:</p>";
+                    for(var i=0;i<lista.length;i++){
+                        
+                            if(lista[i].idade > 60){
+                            txt2+=`<tr><td>${lista[i].nome}</td><td>${lista[i].idade}</td>`;
+                        }
+                    }
+
+                    document.querySelector("#maiores").innerHTML=txt2;
+
+                })
+            });
+
+    </script>
+</head>
+<body class="fundo">
+ <h1> Cadastro de Clientes </h1>
+    <label>Nome</label>
+    <input type="text" name="txtnome" id="txtnome"><br><br>
+     
+    <label>Idade</label>
+    <input type="text" name="txtidade" id="txtidade"><br>
+    <br>
+
+    <button class="buttom1" type="button" name="btnAdd" id="btnAdd">Incluir</button>
+    <button class="buttom2" type="button" name="btnLista" id="btnLista">Listar</button>
+    <button class="buttom3" type="button" name="btnMaiores" id="btnMaiores">Maiores de 60 Anos</button>
+
+    <h3>
+        <table border="2"  >
+            <thead>
+                <tr class="cabeçalho">
+
+                    <th>Nome</th>
+                    <th>Idade</th>
+
+                </tr>
+            </thead>
+            <tbody id="tabela" class="numeros"></tbody>
+            <tbody id="maiores" class="nomes"></tbody>
+        </table>
+    </h3>    
+</body>
+</html>
